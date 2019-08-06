@@ -1,0 +1,50 @@
+
+{% extends 'master/base.html' %}
+{% block 'title' %}Desktop  {% endblock %}
+
+
+{% block 'content' %}
+    <div class="container">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">DeskTop</div>
+                <div class="panel-body">
+                    <form method="post" action="#">
+                        {{form}}
+                        {% csrf_token %}
+                        <br/>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+         <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Add Desktop</div>
+                <div class="panel-body">
+                   <table class="table">
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Issue</th>
+                            <th>Action</th>
+                       {% for k in form3 %}
+                       <tr>
+                           <td>{{k.type}}</td>
+                           <td>{{k.price}}</td>
+                           <td>{{k.status}}</td>
+                           <td>{{k.issues}}</td>
+                           <td><a href="{% url 'dek_edit' k.id %}">Edit</a> |<a href="#" onclick="delete_('{% url 'del_dek' k.id %}')"> Delete</a></td>
+                       </tr>
+                       {% endfor %}
+
+
+                        </table>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+{% endblock %}

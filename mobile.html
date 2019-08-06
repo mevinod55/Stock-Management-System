@@ -1,0 +1,50 @@
+
+{% extends 'master/base.html' %}
+{% block 'title' %}Mobile  {% endblock %}
+
+
+{% block 'content' %}
+    <div class="container">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Mobile</div>
+                <div class="panel-body">
+                    <form method="post" action="#">
+                        {{form}}
+                        {% csrf_token %}
+                        <br/>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+         <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Add Mobile</div>
+                <div class="panel-body">
+                   <table class="table">
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Issue</th>
+                            <th>Action</th>
+                       {% for j in form2 %}
+                       <tr>
+                           <td>{{j.type}}</td>
+                           <td>{{j.price}}</td>
+                           <td>{{j.status}}</td>
+                           <td>{{j.issues}}</td>
+                           <td><a href="{% url 'mob_edit' j.id %}">Edit</a> |<a href="#" onclick="delete_('{% url 'del_mobl' j.id %}')"> Delete</a></td>
+                       </tr>
+                       {% endfor %}
+
+
+                        </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

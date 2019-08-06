@@ -1,0 +1,50 @@
+
+
+{% extends 'master/base.html' %}
+{% block 'title' %}laptop  {% endblock %}
+
+
+{% block 'content' %}
+    <div class="container">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">LapTop</div>
+                <div class="panel-body">
+                    <form method="post" action="#">
+                        {{form}}
+                        {% csrf_token %}
+                        <br/>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Add laptop</div>
+                <div class="panel-body">
+                   <table class="table">
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Issue</th>
+                            <th>Action</th>
+                       {% for i in form1 %}
+                       <tr>
+                           <td>{{i.type}}</td>
+                           <td>{{i.price}}</td>
+                           <td>{{i.status}}</td>
+                           <td>{{i.issues}}</td>
+                           <td><a href="{% url 'lap_edit' i.id %}">Edit</a> |<a href="#" onclick="delete_('{% url 'del_lap' i.id %}')"> Delete</a></td>
+                       </tr>
+                       {% endfor %}
+
+
+                        </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

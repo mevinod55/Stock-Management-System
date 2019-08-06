@@ -1,0 +1,29 @@
+
+{% extends 'master/base.html' %}
+{% block 'title' %}dashboard  {% endblock %}
+{% load staticfiles %}
+
+
+{% block 'content' %}
+<div class="container">
+ <div class= "col-md-4">
+            <img src="{% static 'img/mobile.jpg' %}" class="exp-img" height="200" width="200">
+            <a href="{% url 'my_mobile' %}" class = "exp-text"><h2>Mobiles</h2></a>
+        </div>
+        <div class="col-md-4">
+            <img src="{% static 'img/laptops.jpg' %}" class="exp-img" height="200" width="200">
+            <a href="{% url 'my_laptop' %}" class = "exp-text"><h2>LapTOp</h2></a>
+        </div>
+        <div class="col-md-4">
+            <img src="{% static 'img/desktop.jpg' %}" class="exp-img" height="200" width="200">
+            <a href="{% url 'my_desktop' %}" class = "exp-text"><h2>DeskTop</h2></a>
+        </div>
+
+
+
+
+</div>
+{% endblock %}
+
+
+
